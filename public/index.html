@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Starry Sky — Предрегистрация</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-b from-black to-gray-900 text-white min-h-screen flex items-center justify-center">
+  <div class="text-center space-y-6">
+    <h1 class="text-4xl font-bold">Starry Sky</h1>
+    <p class="text-xl">Предрегистрация</p>
+    <form action="/register" method="POST" class="space-y-4">
+      <input type="email" name="email" required placeholder="Введите ваш email"
+             class="px-4 py-2 rounded text-black w-64">
+      <button type="submit"
+              class="bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-2 rounded shadow">
+        Получить код
+      </button>
+    </form>
+    <p>Всего регистраций: <span id="count">0</span></p>
+  </div>
+  <script>
+    fetch('/count')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('count').textContent = data.count;
+      });
+  </script>
+</body>
+</html>
